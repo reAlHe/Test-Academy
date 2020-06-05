@@ -1,0 +1,16 @@
+version: '3'
+services:
+    postgres:
+      image: postgres
+      volumes:
+        - testdb:/var/lib/postgresql/data
+      ports:
+        - 5432:5432
+      environment:
+        - POSTGRES_USER=ms
+        - POSTGRES_PASSWORD=pw
+        - POSTGRES_DB=testdb
+
+volumes:
+  testdb:
+    driver: local

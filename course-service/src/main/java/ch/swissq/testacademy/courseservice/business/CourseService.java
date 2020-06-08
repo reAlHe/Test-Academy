@@ -23,10 +23,8 @@ public class CourseService {
     }
 
     public Course updateCourse(long courseId, Course courseUpdate) {
-        var existingCourse = courseRepository.findById(courseId).orElseThrow(CourseNotFoundException::new);
-        var updatedCourse = existingCourse.withDataFrom(courseUpdate);
-        validateCourseInformation(updatedCourse);
-        return courseRepository.save(updatedCourse);
+        // TODO 3) implement update logic
+        return null;
     }
 
     public Course getCourse(long courseId) {
@@ -38,11 +36,8 @@ public class CourseService {
     }
 
     public Set<Person> getCourseParticipants(long courseId) {
-        var foundCourse = courseRepository.findById(courseId);
-        if (foundCourse.isEmpty()) {
-            throw new CourseNotFoundException();
-        }
-        return personClientAdapter.getPersonInformationForIds(foundCourse.get().getParticipants());
+        // TODO 6) implement logic for retrieving detailed information about the participants
+        return null;
     }
 
     private void validateCourseInformation(Course course) {

@@ -29,8 +29,8 @@ public class CourseController {
 
     @PutMapping("/{courseId}")
     public ResponseEntity<CourseResponse> updateCourse(@PathVariable long courseId, @RequestBody CourseRequest courseRequest) {
-        var updatedCourse = courseService.updateCourse(courseId, courseRequest.asCourse());
-        return new ResponseEntity<>(fromCourse(updatedCourse), HttpStatus.OK);
+        // TODO 10) implement logic
+        return ResponseEntity.unprocessableEntity().build();
     }
 
     @GetMapping("/{courseId}")

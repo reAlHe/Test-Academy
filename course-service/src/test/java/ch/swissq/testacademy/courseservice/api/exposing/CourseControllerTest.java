@@ -80,55 +80,12 @@ class CourseControllerTest {
 
     @Test
     void registerCourseFailsForUnknownLecturer() throws Exception {
-        var start = LocalDateTime.now();
-        var end = start.plusHours(8);
-        var courseRequest = aCourseRequest()
-                .withName("Test Academy")
-                .withCapacity(10)
-                .withDescription("Cool School")
-                .withLecturer(256L)
-                .withStart(start)
-                .withEnd(end)
-                .build();
-
-        when(personClientAdapterImplMock.isPersonWithIdExistent(1L)).thenReturn(false);
-
-        mockMvc.perform(post("/courses/register")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsBytes(courseRequest)))
-                .andExpect(status().isBadRequest());
+        //TODO 8) implement test
     }
 
     @Test
     void registerCourseFailsForOccupiedLecturer() throws Exception {
-        var start = LocalDateTime.now();
-        var end = start.plusHours(8);
-        var course = aCourse()
-                .withCapacity(10)
-                .withDescription("Cool school")
-                .withLecturer(1L)
-                .withName("Test Academy")
-                .withStartTime(start)
-                .withEndTime(end)
-                .build();
-
-        courseRepository.save(course);
-
-        when(personClientAdapterImplMock.isPersonWithIdExistent(1L)).thenReturn(true);
-
-        var anotherCourse = aCourseRequest()
-                .withName("Test Academy 2")
-                .withCapacity(15)
-                .withDescription("Cool School 2")
-                .withLecturer(1L)
-                .withStart(start)
-                .withEnd(end)
-                .build();
-
-        mockMvc.perform(post("/courses/register")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsBytes(anotherCourse)))
-                .andExpect(status().isBadRequest());
+        //TODO 9) implement test
     }
 
     @Test
@@ -173,75 +130,12 @@ class CourseControllerTest {
 
     @Test
     void updateCourseFailsForOccupiedLecturer() throws Exception {
-        var start = LocalDateTime.now();
-        var end = start.plusHours(8);
-        var course1 = aCourse()
-                .withCapacity(10)
-                .withDescription("Cool school")
-                .withLecturer(1L)
-                .withName("Test Academy")
-                .withStartTime(start)
-                .withEndTime(end)
-                .build();
-        var course2 = aCourse()
-                .withCapacity(10)
-                .withDescription("Cool school")
-                .withLecturer(1L)
-                .withName("Test Academy")
-                .withStartTime(start.plusHours(8))
-                .withEndTime(end.plusHours(8))
-                .build();
-
-        var savedCourse1 = courseRepository.save(course1);
-        courseRepository.save(course2); //this one will clash with our update
-
-        when(personClientAdapterImplMock.isPersonWithIdExistent(1L)).thenReturn(true);
-
-        var courseUpdateRequest = aCourseRequest()
-                .withName("Test Academy shifted 1 hour later")
-                .withCapacity(10)
-                .withDescription("Cool School")
-                .withLecturer(1L)
-                .withStart(start.plusHours(1))
-                .withEnd(end.plusHours(1))
-                .build();
-
-        mockMvc.perform(put("/courses/{courseId}", savedCourse1.getId())
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsBytes(courseUpdateRequest)))
-                .andExpect(status().isBadRequest());
+        // TODO 11) implement test
     }
 
     @Test
     void updateCourseFailsForUnknownLecturer() throws Exception {
-        var start = LocalDateTime.now();
-        var end = start.plusHours(8);
-        var course = aCourse()
-                .withCapacity(10)
-                .withDescription("Cool school")
-                .withLecturer(1L)
-                .withName("Test Academy")
-                .withStartTime(start)
-                .withEndTime(end)
-                .build();
-
-        var savedCourse = courseRepository.save(course);
-
-        when(personClientAdapterImplMock.isPersonWithIdExistent(1L)).thenReturn(false);
-
-        var courseUpdateRequest = aCourseRequest()
-                .withName("Test Academy with new lecturer")
-                .withCapacity(10)
-                .withDescription("Cool School")
-                .withLecturer(256L)
-                .withStart(start)
-                .withEnd(end)
-                .build();
-
-        mockMvc.perform(put("/courses/{courseId}", savedCourse.getId())
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsBytes(courseUpdateRequest)))
-                .andExpect(status().isBadRequest());
+        // TODO 12) implement test
     }
 
     @Test

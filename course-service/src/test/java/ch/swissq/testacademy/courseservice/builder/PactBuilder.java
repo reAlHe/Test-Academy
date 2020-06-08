@@ -17,9 +17,10 @@ public class PactBuilder {
 
     private static Consumer<LambdaDslObject> person() {
         return o -> {
-            o.numberType("id", 1);
-            o.stringType("name", "Silvio");
-            o.stringType("company", "SwissQ");
+            // TODO 13) fix this data
+            o.numberType("xx", 1);
+            o.stringType("name", "yy");
+
             o.stringType("telephone", "12345");
         };
     }

@@ -5,12 +5,25 @@ import Cart from '../../src/pageobjects/cart.page'
 
 describe('ordering a dress', () => {
     it('should work correctly', () => {
-        Home.open();
-        Home.searchForItem('dress');
-        SearchResults.viewDetailsForFirstItem();
-        expect(ProductDetails.viewPrice()).toEqual('$28.98')
-        ProductDetails.addToCart();
-        ProductDetails.proceedToCheckout()
-        expect(Cart.viewOrderedItemDetail()).toEqual('SKU : demo_5')
+        //Open the Homepage
+
+
+        //Search for the item 'dress'
+
+
+        //Click the first element in the result list (top left)
+
+
+        //Make sure that the price is '$28.98'
+
+
+        //Add the item to the shopping cart
+
+
+        //Proceed to checkout
+
+
+        //Make sure that the description text of the item is 'SKU : demo_5'
+
     })
 })

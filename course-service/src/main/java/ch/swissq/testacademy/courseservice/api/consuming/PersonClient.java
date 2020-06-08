@@ -11,7 +11,7 @@ import java.util.Set;
 @FeignClient(name = "personClient", url = "${feign.url}")
 public interface PersonClient {
 
-    @RequestMapping(method=RequestMethod.HEAD, value = "/person/{personId}")
+    @RequestMapping(method=RequestMethod.HEAD, value = "/persons/{personId}")
     ResponseEntity<Void> retrievePersonIdExists(@PathVariable("personId") Long personId);
 
     @GetMapping(value = "/person")
